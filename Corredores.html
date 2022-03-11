@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Corredores</title>
+    <script>
+    function validarNombre(){
+        var nombre=document.getElementById("nombre").value;
+        if (nombre.length>3){
+            return true;
+        }
+
+        else{
+            alert("Minimo 4 caracteres");
+            return false;
+        }}
+      
+        function validar(){
+            var email = document.getElementsByTagName("input")[1].value;
+            if(validarEmail(email)){
+                alert("El email es valido");
+            }
+            else{
+                alert("El email es invalido");
+            }
+        }
+
+        function validarEmail(mail){
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+            return (true);
+        }
+        else{
+            return (false);
+        }}
+
+        function crearInput(){
+            var element = document.createElement("input");
+                element.type = "number";
+                element.id = "distancia";
+                element.placeholder = "Distancia (Km)";
+            var purita = document.getElementById("corre");
+                purita.appendChild(element);
+        }
+
+        function mostrarBoton(){
+            var nombre = document.getElementById("nombre").value;
+            var email = document.getElementById("email").value;
+            var checkeado = document.getElementById("sicorre").checked;
+            var distancia = document.getElementById("distancia").value;
+
+        if(checkeado == true){
+            alert("Te llamas " + nombre + " con email " + email + " y has corrido carreras de " + distancia + " km.");
+        }
+        else if(checkeado == false){
+            alert("Te llamas " + nombre + " con email " + email)
+        }}
+
+
+    </script>
+</head>
+<body>
+    <h2>Formulario de corredores</h2>
+    <form action="#">
+    <input type="text" id="nombre" placeholder="Introduce tu nombre" onblur="validarNombre()"><br>
+    <input type="email" id="email" placeholder="Introduce tu email" onblur="validar()">
+
+    <p>¿Has corrido antes?</p>
+    <input type="radio" id="sicorre" value="Si" onclick="crearInput()"><label for="sicorre">Si</label>
+    <div id="corre"></div>
+    <input type="radio" id="nocorre" value="No"><label for="noccorre">No</label><br><br>
+
+    <input type="button" name="boton" id="boton" value="Enviar"  onclick="mostrarBoton()">
+    </form>
+</body>
+</html>
